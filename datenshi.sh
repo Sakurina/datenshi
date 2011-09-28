@@ -8,12 +8,13 @@ footer_file='_tpl/footer.html'
 mkdir -p $output_dir
 
 if [ -f '.datenshi_lastrun' ]; then
-  input_files=`find . -newer .datenshi_lastrun -path "*.markdown"`
+  input_files=`find . -maxdepth 1 -newer .datenshi_lastrun -path "*.markdown"`
 else
   input_files=`echo *.markdown`
 fi
 
 for md in $input_files; do
+  md=`basename $md`
   output_file="$output_dir/${md%.*}.html"
   echo ":: generating $output_file ..."
   cat $header_file | sed "s/{{title}}/`head -n 1 $md | cut -c 3-`/" > $output_file
