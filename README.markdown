@@ -24,6 +24,10 @@ These are the assumptions *datenshi* makes on your environment and files:
 
 *datenshi* creates a hidden file called *.datenshi_lastrun* which is used to find files that have been changed since the last time you ran it. If you delete that, it will regenerate the entire site. This may be useful if you changed the header or footer and you want it to spread to all previous pages.
 
+## tengoku: a companion deployment script
+
+*tengoku* deploys your static site via FTP. Similarly to *datenshi*, it will only upload files that have changed since your last deployment. This script depends on *ncftp*, as it makes use of *ncftpput* to script the upload. You can specify which ncftp bookmark you want *tengoku* to use to deploy your site by editing the script.
+
 ## Why is this so simple? It can't do XYZ! This is useless!
 
 There are *tons* of static site generators in a variety of languages. While there are some really nice ones, I just wanted something that was braindead to set up to let me focus on my writing. It took me less time to write the (imperfect) *datenshi* to generate my site for me than I spent dicking around with other static site generators.
